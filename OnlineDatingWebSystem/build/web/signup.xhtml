@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>University of Houston Dating System</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        <style>               
+            //.Bimage{background-image:url("https://baltimore.cbslocal.com/wp-content/uploads/sites/15910056/2012/02/dating-sites-mouse.jpg?w=413"); } 
+        </style>
+    </h:head>
+    <h:body styleClass="Bimage">
+
+        <div style="background-color: pink; padding: 0px;">
+            <h1 style="color: red; font-style: italic;"><center>♥ Welcome to University of Houston Dating System ♥</center></h1>
+        </div>
+
+        <div class="container">
+            <h:form style=" margin-top: 40px">
+                <b:panelGrid columns="2">
+                    <b:panel title="Who are you?" look="primary">
+                        <b:inputText value="#{accountSignup.fname}" label="First name"  required ="true" 
+                                     requiredMessage="The name feild cannot be empty!"
+                                     title="Please enter your first name"   />
+                        <b:inputText value="#{accountSignup.lname}" label="Last name" required ="true" 
+                                     requiredMessage="The name feild cannot be empty!"
+                                     title="Please enter your last name"   />
+                        <b:inputText value="#{accountSignup.gend}" label="Gender" title="Please enter your gender"   />
+                        <b:inputText value="#{accountSignup.age}" label="Age" title="Please enter your age"   />
+                        <b:inputText value="#{accountSignup.city}" label="City" title="Please enter your city"   />
+                        <b:inputText value="#{accountSignup.intrst1}" label="Interest1" title="Please enter one of your interest" />
+                        <b:inputText value="#{accountSignup.intrst2}" label="Interest2" title="Please enter one of your interest" />
+                        <b:inputText value="#{accountSignup.intrst3}" label="Interest3" title="Please enter one of your interest" />
+                    </b:panel>
+                    <b:panel title="More Information?" look="primary">
+                        <b:inputText value="#{accountSignup.user_id}" label="User Id" required ="true" 
+                                     requiredMessage="The ID field cannot be empty"
+                                     title="Please enter your user ID" 
+                                     validatorMessage="The length of your selected 
+                                     ID must be between 3 and 20.">
+                            <f:validateLength maximum="20" minimum="3" />
+                        </b:inputText>
+                        <b:inputSecret label="Password" required ="true" 
+                                       requiredMessage="The password field cannot be empty"
+                                       title="Please enter your password"
+                                       value="#{accountSignup.pswd}"
+                                       validatorMessage="The length of your 
+                                       password must be between 3 and 20.">
+                            <f:validateLength maximum="20" minimum="3" />
+                        </b:inputSecret>
+                        <b:inputSecret label="Confirm Password" required ="true" 
+                                       requiredMessage="The password field cannot be empty"
+                                       title="Please enter your password"
+                                       value="#{accountSignup.pswd}"
+                                       validatorMessage="The length of your 
+                                       password must be between 3 and 20.">
+                            <f:validateLength maximum="20" minimum="3" />
+                        </b:inputSecret>
+
+                        <b:inputText value="#{accountSignup.ans}" label="Which city you were born?" required ="true" 
+                                       requiredMessage="The password field cannot be empty"     />
+                        <b:commandButton value="Signup" action="#{accountSignup.signup()}" />
+                    </b:panel>
+                </b:panelGrid>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
+

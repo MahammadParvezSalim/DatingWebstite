@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Login</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+        
+        
+        <style>               
+        //.Bimage{background-image:url("https://baltimore.cbslocal.com/wp-content/uploads/sites/15910056/2012/02/dating-sites-mouse.jpg?w=413"); } 
+        </style>
+    </h:head>
+    <h:body styleClass="Bimage">
+        <b:navBar brand="UhclDating" fluid="true" inverse="true" brandHref="loggedinPage.xhtml">
+            <b:navbarLinks pull="left">
+                <b:navLink icon-awesome="comments" outcome="#{messages.MessagedUser(accountLogin.user_id)}"></b:navLink>
+                <b:navLink  icon-awesome="bell" href="noti.xhtml"></b:navLink>
+                <b:dropMenu value="" icon-awesome="heart">
+                    <b:navLink value="Friends" outcome="#{friends.FriendList(accountLogin.user_id)}" ></b:navLink>
+                    <b:navLink value="Views" outcome="#{viewProfile.WhoViewed(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Friend Requests" outcome="#{friends.ReceivedRequests(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Top Profiles" href="topProfilesMain.xhtml"></b:navLink>
+                    <b:navLink value="Advance Search" href="search.xhtml"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks>
+                <b:form  class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
+                    <div class="form-group">
+                        #{search.setUserid(accountLogin.user_id)}
+                        <b:inputText value="#{search.any}" type="text" class="form-control" pt:placeholder="Search"></b:inputText>
+                    </div>
+                    <b:commandButton action="#{search.AnySearch()}" type="submit" class="btn btn-default" icon-awesome="search"></b:commandButton>
+                </b:form>
+            </b:navbarLinks>
+            
+            <b:navbarLinks pull="right">
+                
+                <b:dropMenu value="" icon-awesome="cog">
+                    <b:navLink value="Update Profile" outcome="#{updateProfile.GetProfile(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Reset Password" href="resetPassword.xhtml"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:form>
+                    <b:commandButton value="LogOut" action="#{logOut.LogOut(accountLogin.user_id)}"></b:commandButton>
+                    </b:form>
+                </b:dropMenu>
+                    
+            </b:navbarLinks>
+        </b:navBar>
+        <div class="container">
+        <b:panelGrid colSpans="4,7,1">
+            <b:panel title="Messages" collapsible="false">
+                <h:form>
+                    <h:dataTable  value="#{messages.filteredUser}" var="obj">
+                        <h:column>
+                            <li class="list-group-item">
+                                #{messages.setSid(accountLogin.user_id)}
+                                <h:commandLink   value="#{obj}" action="#{messages.ReadMessage(accountLogin.user_id, obj)}"/>
+                            </li>
+                            <br></br>
+                        </h:column>
+                    </h:dataTable>  
+                </h:form>
+            </b:panel>
+            <b:panel title="Chat">
+                <h:form>
+                    <h:dataTable value="#{messages.messages}" var="obj">
+                        <h:column>
+                            <h:outputText value="#{obj}"></h:outputText>
+                        </h:column>
+                    </h:dataTable>
+                    <br></br>
+                    <b:inputText value="#{messages.msg}" pt:placeholder="Enter a message"></b:inputText>
+                    <b:commandButton value="Submit" action="#{messages.SendMessage()}"></b:commandButton>
+                </h:form>
+            </b:panel>    
+        </b:panelGrid>
+        </div>
+            
+        
+        
+    </h:body>
+</html>
+

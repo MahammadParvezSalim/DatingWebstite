@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Forget Password</title>
+        <meta http-equiv="cache-control" content="no-cache" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="refresh"/>
+
+    </h:head>
+    <h:body >
+        <div style="background-color: pink; padding: 0px;">
+            <h1 style="color: red; font-style: italic;"><center>♥ Welcome to University of Houston Dating System ♥</center></h1>
+        </div>
+        <b:form>
+            <b:inputText pt:placeholder="Enter your user id." required ="true" 
+                         requiredMessage="This feild cannot be empty!"
+                         title="Please enter your user id."
+                         value="#{forgetPassword.user_id}"></b:inputText>
+            <b:commandButton value="Submit"
+                             action="#{forgetPassword.CheckUser()}"></b:commandButton>
+        </b:form>
+
+    </h:body>
+</html>
+
+

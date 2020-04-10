@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Profile</title>
+        <style>               
+        //.Bimage{background-image:url("https://baltimore.cbslocal.com/wp-content/uploads/sites/15910056/2012/02/dating-sites-mouse.jpg?w=413"); } 
+        </style>
+    </h:head>
+    <h:body styleClass="Bimage">
+        <b:navBar brand="UhclDating" fluid="true" inverse="true" brandHref="loggedinPage.xhtml">
+            <b:navbarLinks pull="left">
+                <b:navLink icon-awesome="comments" outcome="#{messages.MessagedUser(accountLogin.user_id)}"></b:navLink>
+                <b:navLink  icon-awesome="bell" href="noti.xhtml"></b:navLink>
+                <b:dropMenu value="" icon-awesome="heart">
+                    <b:navLink value="Friends" outcome="#{friends.FriendList(accountLogin.user_id)}" ></b:navLink>
+                    <b:navLink value="Views" outcome="#{viewProfile.WhoViewed(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Friend Requests" outcome="#{friends.ReceivedRequests(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Top Profiles" href="topProfilesMain.xhtml"></b:navLink>
+                    <b:navLink value="Advance Search" href="search.xhtml"></b:navLink>
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks>
+                <b:form  class="navbar-form navbar-left hidden-md hidden-sm hidden-xs" role="search">
+                    <div class="form-group">
+                        #{search.setUserid(accountLogin.user_id)}
+                        <b:inputText value="#{search.any}" type="text" class="form-control" pt:placeholder="Search"></b:inputText>
+                    </div>
+                    <b:commandButton action="#{search.AnySearch()}" type="submit" class="btn btn-default" icon-awesome="search"></b:commandButton>
+                </b:form>
+            </b:navbarLinks>
+            
+            <b:navbarLinks pull="right">
+                
+                <b:dropMenu value="" icon-awesome="cog">
+                    <b:navLink value="Update Profile" outcome="#{updateProfile.GetProfile(accountLogin.user_id)}"></b:navLink>
+                    <b:navLink value="Reset Password" href="resetPassword.xhtml"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:form>
+                    <b:commandButton value="LogOut" action="#{logOut.LogOut(accountLogin.user_id)}"></b:commandButton>
+                    </b:form>
+                </b:dropMenu>
+                    
+            </b:navbarLinks>
+        </b:navBar>
+        <h1>Profile</h1>
+        
+            First Name:
+            <h:outputText value="#{updateProfile.fname}"></h:outputText><br></br>
+            Last Name:
+            <h:outputText value="#{updateProfile.lname}"></h:outputText><br></br>
+            Age:
+            <h:outputText value="#{updateProfile.age}"></h:outputText><br></br>
+            City:
+            <h:outputText value="#{updateProfile.city}"></h:outputText><br></br>
+            Interest:
+            <h:outputText value="#{updateProfile.intrst1}"></h:outputText><br></br>
+            Interest:
+            <h:outputText value="#{updateProfile.intrst2}"></h:outputText><br></br>
+            Interest:
+            <h:outputText value="#{updateProfile.intrst3}"></h:outputText><br></br><br></br>
+            <h1>Update Profile</h1>
+       
+       
+            <h:form>
+                
+             First Name:
+             <h:inputText value="#{updateProfile.fname}" ></h:inputText><br></br><br></br>
+             Last Name:
+             <h:inputText value="#{updateProfile.lname}" ></h:inputText><br></br><br></br>
+             Age:
+             <h:inputText value="#{updateProfile.age}" ></h:inputText><br></br><br></br>
+             Gender:
+             <h:inputText value="#{updateProfile.gender}" ></h:inputText><br></br><br></br>
+             City:
+             <h:inputText value="#{updateProfile.city}" ></h:inputText><br></br><br></br>
+             Interest:
+             <h:inputText value="#{updateProfile.intrst1}" ></h:inputText><br></br><br></br>
+             Interest:
+             <h:inputText value="#{updateProfile.intrst2}" ></h:inputText><br></br><br></br>
+             Interest:
+             <h:inputText value="#{updateProfile.intrst3}" ></h:inputText><br></br><br></br>
+             
+             <h:commandButton action="#{updateProfile.UpdatePro()}" value="Update"/>
+           </h:form>
+       
+        
+        
+    </h:body>
+</html>
+

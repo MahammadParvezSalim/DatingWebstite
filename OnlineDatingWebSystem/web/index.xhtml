@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>University of Houston Dating System</title>
+        <meta http-equiv="pragma" content="no-cache" />
+
+    </h:head>
+    <h:body styleClass="Bimage">
+        <div style="background-color: pink; padding: 0px;">
+            <h1 style="color: red; font-style: italic;"><center>♥ Welcome to University of Houston Dating System ♥</center></h1>
+        </div>
+        <div class="container" style="margin-top: 50px; width: 400px;">
+
+            <b:panel title="Login" collapsible="true" look="primary">
+                <h:form>
+                    <b:inputText pt:placeholder="User ID" required ="true" 
+                                 requiredMessage="The ID field cannot be empty"
+                                 title="Please enter your ID"
+                                 value="#{accountLogin.user_id}"/>
+
+                    <b:inputSecret pt:placeholder="Password" required ="true" 
+                                   requiredMessage="The password field cannot be empty"
+                                   title="Please enter your password"
+                                   value="#{accountLogin.pswd}"
+                                   />
+                    <div align="center">
+                        <b:commandButton look="success" value="Login" action="#{accountLogin.login()}" large-screen="full-width" />
+                    </div>
+                </h:form>
+                <br></br>
+                <br></br>
+                <div align="center">
+                    <b:form>
+                        <h:link outcome="forgetUser.xhtml" value="Forgot Password?"></h:link>
+
+                        <br></br>
+                        <br></br>
+                        <b:commandButton look="success" value="Create Account" action="signup.xhtml"></b:commandButton>
+                    </b:form>
+                </div>
+            </b:panel> 
+        </div>
+        
+    </h:body>
+</html>
+
